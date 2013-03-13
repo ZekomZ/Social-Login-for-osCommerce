@@ -5,7 +5,7 @@ Tags: Social login, openID, osCommerce plugin, LoginRadius, open authentication,
 single sign-on , SAAS solution, Social Sign-in, Social Login Plug-in, Google, Yahoo OpenID, Hyves openid,Linkedin openid, Mixi opendID, Virgilio OpenID
 Requires: osCommerce online merchant v2.3.1
 Tested on: osCommerce online merchant v2.3.1
-Stable tag: 1.6
+Stable tag: 1.6.1
 
 This plugin enables social login on osCommerce websites.
 
@@ -65,7 +65,7 @@ Watch out Our video: http://www.youtube.com/loginradius
 1. Place "create_account.php" and "login.php" from catalog/ directory of Social Login (LoginRadius) Plugin Folder in the catalog/ directory to your FTP.
 2. Place "bm_loginradius.php" from catalog/includes/modules/boxes directory of Social Login (LoginRadius) Plugin Folder in catalog/includes/modules/boxes directories.
 3. Place "bm_loginradius.php" from catalog/includes/languages/english/modules/boxes directory of Social Login (LoginRadius) Plugin Folder in catalog/includes/languages/english/modules/boxes to your FTP.
-4. add code on file "catalog/includes/application_top.php" AT BOTTOM of file
+4. add code on file "catalog/includes/template_top.php" AT BOTTOM of file
    
 code is
 

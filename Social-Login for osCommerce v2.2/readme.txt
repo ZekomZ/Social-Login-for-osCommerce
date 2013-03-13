@@ -5,7 +5,7 @@ Tags: Social login, openID, osCommerce plugin, LoginRadius, open authentication,
 single sign-on , SAAS solution, Social Sign-in, Social Login Plug-in, Google, Yahoo OpenID, Hyves openid,Linkedin openid, Mixi opendID, Virgilio OpenID
 Requires: oscommerce-2.2rc2a
 Tested on: oscommerce-2.2rc2a
-Stable tag: 1.6
+Stable tag: 1.6.1
 
 This plugin enables social login on osCommerce websites.
 
