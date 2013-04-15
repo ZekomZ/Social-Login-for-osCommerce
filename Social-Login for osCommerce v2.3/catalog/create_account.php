@@ -11,7 +11,7 @@
 */
 
   require('includes/application_top.php');
-  //include('includes/bm_loginradius.php');
+
 // needs to be included earlier to set the success message in the messageStack
   require(DIR_WS_LANGUAGES . $language . '/' . FILENAME_CREATE_ACCOUNT);
 
@@ -210,8 +210,6 @@
 
       tep_db_query("update " . TABLE_CUSTOMERS . " set customers_default_address_id = '" . (int)$address_id . "' where customers_id = '" . (int)$customer_id . "'");
 
-
-
       tep_db_query("insert into " . TABLE_CUSTOMERS_INFO . " (customers_info_id, customers_info_number_of_logons, customers_info_date_account_created) values ('" . (int)$customer_id . "', '0', now())");
 
       if (SESSION_RECREATE == 'True') {
@@ -269,21 +267,9 @@
 ?>
 
 <p><?php echo sprintf(TEXT_ORIGIN_LOGIN, tep_href_link(FILENAME_LOGIN, tep_get_all_get_params(), 'SSL')); ?></p>
-<?php 
-   //for adding loginradius
- if (defined('MODULE_BOXES_LOGINRADIUS_STATUS') && (MODULE_BOXES_LOGINRADIUS_STATUS == 'True')) {
-   $text_query = tep_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_BOXES_LOGINRADIUS_ACCTEXT'");
-   $text_array = tep_db_fetch_array($text_query);
-   $text = $text_array['configuration_value'];
-   echo $text."<br><br>";
-   echo $sociallogininterface;
-  }
-  echo "<br><br>Or you can register yourself by filling the Form below!";
-  //until here
-  ?>
 
 <?php echo tep_draw_form('create_account', tep_href_link(FILENAME_CREATE_ACCOUNT, '', 'SSL'), 'post', 'onsubmit="return check_form(create_account);"', true) . tep_draw_hidden_field('action', 'process'); ?>
-
+<?php print $SOCIALLOGININTERFACE;?>
 <div class="contentContainer">
   <div>
     <span class="inputRequirement" style="float: right;"><?php echo FORM_REQUIRED_INFORMATION; ?></span>

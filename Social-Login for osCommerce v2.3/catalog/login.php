@@ -5,14 +5,14 @@
   osCommerce, Open Source E-Commerce Solutions
   http://www.oscommerce.com
 
-  Copyright (c) 2010 osCommerce
+  Copyright (c) 2012 osCommerce
 
   Released under the GNU General Public License
 */
 
   require('includes/application_top.php');
- // include('includes/bm_loginradius.php');
-  // redirect the customer to a friendly cookie-must-be-enabled page if cookies are disabled (or the session has not started)
+
+// redirect the customer to a friendly cookie-must-be-enabled page if cookies are disabled (or the session has not started)
   if ($session_started == false) {
     tep_redirect(tep_href_link(FILENAME_COOKIE_USAGE));
   }
@@ -57,7 +57,7 @@
         tep_session_register('customer_country_id');
         tep_session_register('customer_zone_id');
 
-        tep_db_query("update " . TABLE_CUSTOMERS_INFO . " set customers_info_date_of_last_logon = now(), customers_info_number_of_logons = customers_info_number_of_logons+1 where customers_info_id = '" . (int)$customer_id . "'");
+        tep_db_query("update " . TABLE_CUSTOMERS_INFO . " set customers_info_date_of_last_logon = now(), customers_info_number_of_logons = customers_info_number_of_logons+1, password_reset_key = null, password_reset_date = null where customers_info_id = '" . (int)$customer_id . "'");
 
 // reset session token
         $sessiontoken = md5(tep_rand() . tep_rand() . tep_rand() . tep_rand());
@@ -91,26 +91,11 @@
   if ($messageStack->size('login') > 0) {
     echo $messageStack->output('login');
   }
-  
-
-
- ?>
+?>
 
 <div class="contentContainer" style="width: 45%; float: left;">
   <h2><?php echo HEADING_NEW_CUSTOMER; ?></h2>
-<?php 
-   //for adding loginradius
- if (defined('MODULE_BOXES_LOGINRADIUS_STATUS') && (MODULE_BOXES_LOGINRADIUS_STATUS == 'True')) {
-   $text_query = tep_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_BOXES_LOGINRADIUS_ACCTEXT'");
-   $text_array = tep_db_fetch_array($text_query);
-   $text = $text_array['configuration_value'];
-   echo $text."<br><br>";
-   echo $sociallogininterface;
-  }
-echo "<br><br>Or you can register yourself by filling the Form below!";
-  //until here
-  ?>
-
+<?php print $SOCIALLOGININTERFACE;?> 
   <div class="contentText">
     <p><?php echo TEXT_NEW_CUSTOMER; ?></p>
     <p><?php echo TEXT_NEW_CUSTOMER_INTRODUCTION; ?></p>
@@ -124,19 +109,7 @@ echo "<br><br>Or you can register yourself by filling the Form below!";
 
   <div class="contentText">
     <p><?php echo TEXT_RETURNING_CUSTOMER; ?></p>
-<?php 
- //for adding loginradius
-if (defined('MODULE_BOXES_LOGINRADIUS_STATUS') && (MODULE_BOXES_LOGINRADIUS_STATUS == 'True')) {
-   $text_query = tep_db_query("select configuration_value from " . TABLE_CONFIGURATION . " where configuration_key = 'MODULE_BOXES_LOGINRADIUS_LOGINTEXT'");
-   $text_array = tep_db_fetch_array($text_query);
-   $text = $text_array['configuration_value'];
-   echo $text."<br><br>";
-   echo $sociallogininterface;
-}
-  echo "<br><br>Or you can login if you have already account here in traditional form!";
-  //until here
-  ?>
-
+<?php print $SOCIALLOGININTERFACE;?> 
     <?php echo tep_draw_form('login', tep_href_link(FILENAME_LOGIN, 'action=process', 'SSL'), 'post', '', true); ?>
 
     <table border="0" cellspacing="0" cellpadding="2" width="100%">
