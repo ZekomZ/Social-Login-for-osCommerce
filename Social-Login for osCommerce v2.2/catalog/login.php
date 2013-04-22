@@ -150,15 +150,8 @@ function session_win() {
                     <td><?php echo tep_draw_separator('pixel_trans.gif', '100%', '10'); ?></td>
                   </tr>
                   <tr>
-				<td class="main">  
-<?php	//LoginRadius code
-	echo "<b>OR Login with</b><br>";
-	echo $sociallogininterface;
-	?>		
-	
-	</td>		
-			
-                    <td class="main" valign="top"><?php echo TEXT_NEW_CUSTOMER . '<br><br>' . TEXT_NEW_CUSTOMER_INTRODUCTION; ?></td>
+                  <td class="main" valign="top"><?php echo TEXT_NEW_CUSTOMER . '<br><br>' . TEXT_NEW_CUSTOMER_INTRODUCTION; ?><br>
+				  <?php	echo $sociallogininterface;?></td>
 				</tr>
                   <tr>
                     <td><?php echo tep_draw_separator('pixel_trans.gif', '100%', '10'); ?></td>
@@ -186,7 +179,8 @@ function session_win() {
                     <td class="main" colspan="2"><?php echo TEXT_RETURNING_CUSTOMER; ?></td>
                   </tr>
                   <tr>
-                    <td colspan="2"><?php echo tep_draw_separator('pixel_trans.gif', '100%', '10'); ?></td>
+                    <td colspan="2"><?php echo tep_draw_separator('pixel_trans.gif', '100%', '10'); ?><br>
+				  <?php	echo $sociallogininterface;?></td>
                   </tr>
                   <tr>
                     <td class="main"><b><?php echo ENTRY_EMAIL_ADDRESS; ?></b></td>
